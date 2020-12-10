@@ -1,0 +1,469 @@
+<!--
+=========================================================
+* Argon Design System - v1.2.2
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-design-system
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../static/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../static/img/favicon.png">
+  <title>
+    Inforums - Home
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="../static/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../static/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <link href="../static/css/font-awesome.css" rel="stylesheet" />
+  <link href="../static/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="../static/css/argon-design-system.css?v=1.2.2" rel="stylesheet" />
+</head>
+
+<body class="landing-page">
+  <!-- Navbar -->
+  <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
+    <div class="container">
+      <a class="navbar-brand mr-lg-5" href="{{ url_for('index') }}">
+        <img src="../static/img/brand/white.png" alt="White Inforums logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbar_global">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a href="{{ url_for('index') }}">
+                <img src="../static/img/brand/blue.png">
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+          <li class="nav-item">
+            <a href="{{ url_for('index') }}" class="nav-link">
+              <i class="ni ni-compass-04 d-lg-none"></i>
+              <span class="nav-link-inner--text">Home</span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
+              <i class="ni ni-collection d-lg-none"></i>
+              <span class="nav-link-inner--text">Topics</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">
+                <span class="inner--icon"><i class="ni ni-controller"></i></span>
+                <span class="text pl-2"> Gaming</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <span class="inner--icon"><i class="ni ni-laptop"></i></span>
+                <span class="text pl-2"> Coding</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <span class="inner--icon"><i class="ni ni-atom"></i></span>
+                <span class="text pl-2"> Science</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <span class="inner--icon"><i class="ni ni-chart-bar-32"></i></span>
+                <span class="text pl-2"> Stock Market</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <span class="inner--icon"><i class="ni ni-palette"></i></span>
+                <span class="text pl-2"> Art</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+          {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{{ url_for('profile', user=current_user.username)}}" class="nav-link">
+                <i class="ni ni-compass-04 d-lg-none"></i>
+                <span class="nav-link-inner--text">{{ current_user.username }}</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
+                <span href="javascript:;" class="avatar rounded-circle">
+                  <img alt="Image placeholder" src="{{ current_user.avatar_path }}">
+                </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                <a class="dropdown-item" href="{{ url_for('profile', user=current_user.username) }}">
+                  <span class="btn-inner--icon"><i class="fa fa-user-alt"></i></span>
+                  <span class="btn-inner--text">My Profile</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url_for('logout') }}">
+                  <span class="btn-inner--icon"><i class="fa fa-sign-out"></i></span>
+                  <span class="btn-inner--text">Log Out</span>
+                </a>
+              </div>
+            </li>
+          {% else %}
+            <li class="nav-item py-2">
+              <a href="{{ url_for('login') }}">
+                <button type="button" class="btn btn-sm btn-outline-success">Sign In</button>
+              </a>
+            </li>
+            <li class="nav-item py-2">
+              <a href="{{ url_for('register') }}">
+                <button type="button" class="btn btn-sm btn-success">Sign Up!</button>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="wrapper">
+    <div class="section section-hero section-shaped">
+      <div class="shape shape-style-1 bg-gradient-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="page-header">
+        <div class="container shape-container d-flex align-items-center py-sm">
+          <div class="col px-0">
+            <div class="container mt-4">
+              <!-- load popup maybe -->
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert" id="flash">
+                      <span class="alert-inner--icon"><i class="fa fa-exclamation-circle"></i></span>
+                      <span class="alert-inner--text">{{ message }}</span>
+                      <button type="button" class="close" onclick="hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  {% endfor %}
+                {% else %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert" style="visibility: hidden;">
+                  <span class="alert-inner--icon"><i class="fa fa-exclamation-circle"></i></span>
+                  <span class="alert-inner--text">{{ message }}</span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                {% endif %}
+              {% endwith %}
+            </div>
+            <div class="row align-items-center justify-content-center">
+              <div class="col-lg-6 text-center">
+                <h1 class="text-white display-1">Search for a topic</h1>
+                <!-- search -->
+                <form method="POST" acton="/" enctype="multipart/form-data">
+                  <div class="row mr-auto">
+                    <div class="col">
+                      <div class="form-group">
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="Search" type="text">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="btn-wrapper">
+                      <button type="submit" name="search" class="btn btn-success">
+                        <i class="ni ni-bold-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <br><br>
+            
+            <div name="box" class="card mt-2">
+              <div class="card-body">
+                <div class="card-header bg-white pb-2">
+                  <h4>Recent Threads</h4>
+                </div>
+                <div class="list-group">
+                  <!-- loop though all posts -->
+                  {% for post in new_posts %}
+                    <a href="{{ url_for('thread', post_id=post.id) }}" class="list-group-item list-group-item-action">
+                      <span class="pull-left">
+                        <div class="icon icon-shape bg-gradient-{{ icon[post.topic][0] }} rounded-circle text-white mr-3">
+                          <i class="{{ icon[post.topic][1] }}"></i>
+                        </div>
+                      </span>
+                      <div class="list-group-item-text mb-1">{{ post.title }}</div>
+                      <span class="badge badge-pill badge-primary text-lowercase">u/{{ post.user.username }}</span>
+                      <span class="text-muted pull-right" style="font-size: 0.85em;">{{ post.date }}</span>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <div class="nav-wrapper">
+              <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-controller mr-2"></i>Gaming</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-laptop mr-2"></i>Coding</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-atom mr-2"></i>Science</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-4-tab" data-toggle="tab" href="#tabs-icons-text-4" role="tab" aria-controls="tabs-icons-text-4" aria-selected="false"><i class="ni ni-chart-bar-32 mr-2"></i>Stock Market</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-5-tab" data-toggle="tab" href="#tabs-icons-text-5" role="tab" aria-controls="tabs-icons-text-5" aria-selected="false"><i class="ni ni-palette mr-2"></i>Art</a>
+                </li>
+              </ul>
+            </div>
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab"> 
+                    <!-- topic header and new thread button -->
+                    <div class="row pr-3">
+                      <div class="card-header bg-white pb-2 ml-3">
+                        <h4>Gaming</h4>
+                      </div>
+                      <div class="ml-lg-auto">
+                        <a href="{{ url_for('new_thread', topic=1) }}">
+                          <button type="button" class="btn btn-sm btn-success mt-4">Create thread</button>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="list-group">
+                      <!-- loop through all gaming posts-->
+                      {% for post in gaming_posts %}
+                        <a href="{{ url_for('thread', post_id=post.id) }}" class="list-group-item list-group-item-action">
+                          <span class="pull-left">
+                            <img src="{{ post.user.avatar_path }}" alt="Circle image" class="avatar rounded-circle shadow mr-3">
+                          </span>
+                          <div class="list-group-item-text mb-1">{{ post.title }}</div>
+                          <span class="badge badge-pill badge-primary text-lowercase">u/{{ post.user.username }}</span>
+                          <span class="text-muted pull-right" style="font-size: 0.85em;">{{ post.date }}</span>
+                        </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+                    <!-- topic header and new thread button -->
+                    <div class="row pr-3">
+                      <div class="card-header bg-white pb-2 ml-3">
+                        <h4>Coding</h4>
+                      </div>
+                      <div class="ml-lg-auto">
+                        <a href="{{ url_for('new_thread', topic=2) }}">
+                          <button type="button" class="btn btn-sm btn-success mt-4">Create thread</button>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="list-group">
+                      <!-- loop through all coding posts-->
+                      {% for post in coding_posts %}
+                        <a href="{{ url_for('thread', post_id=post.id) }}" class="list-group-item list-group-item-action">
+                          <span class="pull-left">
+                            <img src="{{ post.user.avatar_path }}" alt="Circle image" class="avatar rounded-circle shadow mr-3">
+                          </span>
+                          <div class="list-group-item-text mb-1">{{ post.title }}</div>
+                          <span class="badge badge-pill badge-primary text-lowercase">u/{{ post.user.username }}</span>
+                          <span class="text-muted pull-right" style="font-size: 0.85em;">{{ post.date }}</span>
+                        </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+                    <!-- topic header and new thread button -->
+                    <div class="row pr-3">
+                      <div class="card-header bg-white pb-2 ml-3">
+                        <h4>Science</h4>
+                      </div>
+                      <div class="ml-lg-auto">
+                        <a href="{{ url_for('new_thread', topic=3) }}">
+                          <button type="button" class="btn btn-sm btn-success mt-4">Create thread</button>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="list-group">
+                      <!-- loop through all science posts-->
+                      {% for post in science_posts %}
+                        <a href="{{ url_for('thread', post_id=post.id) }}" class="list-group-item list-group-item-action">
+                          <span class="pull-left">
+                            <img src="{{ post.user.avatar_path }}" alt="Circle image" class="avatar rounded-circle shadow mr-3">
+                          </span>
+                          <div class="list-group-item-text mb-1">{{ post.title }}</div>
+                          <span class="badge badge-pill badge-primary text-lowercase">u/{{ post.user.username }}</span>
+                          <span class="text-muted pull-right" style="font-size: 0.85em;">{{ post.date }}</span>
+                        </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="tabs-icons-text-4" role="tabpanel" aria-labelledby="tabs-icons-text-4-tab">
+                    <!-- topic header and new thread button -->
+                    <div class="row pr-3">
+                      <div class="card-header bg-white pb-2 ml-3">
+                        <h4>Stock Market</h4>
+                      </div>
+                      <div class="ml-lg-auto">
+                        <a href="{{ url_for('new_thread', topic=4) }}">
+                          <button type="button" class="btn btn-sm btn-success mt-4">Create thread</button>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="list-group">
+                      <!-- loop through all stock market posts-->
+                      {% for post in stock_posts %}
+                        <a href="{{ url_for('thread', post_id=post.id) }}" class="list-group-item list-group-item-action">
+                          <span class="pull-left">
+                            <img src="{{ post.user.avatar_path }}" alt="Circle image" class="avatar rounded-circle shadow mr-3">
+                          </span>
+                          <div class="list-group-item-text mb-1">{{ post.title }}</div>
+                          <span class="badge badge-pill badge-primary text-lowercase">u/{{ post.user.username }}</span>
+                          <span class="text-muted pull-right" style="font-size: 0.85em;">{{ post.date }}</span>
+                        </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="tabs-icons-text-5" role="tabpanel" aria-labelledby="tabs-icons-text-5-tab">
+                    <!-- topic header and new thread button -->
+                    <div class="row pr-3">
+                      <div class="card-header bg-white pb-2 ml-3">
+                        <h4>Art</h4>
+                      </div>
+                      <div class="ml-lg-auto">
+                        <a href="{{ url_for('new_thread', topic=5) }}">
+                          <button type="button" class="btn btn-sm btn-success mt-4">Create thread</button>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="list-group">
+                      <!-- loop through all art posts-->
+                      {% for post in art_posts %}
+                        <a href="{{ url_for('thread', post_id=post.id) }}" class="list-group-item list-group-item-action">
+                          <span class="pull-left">
+                            <img src="{{ post.user.avatar_path }}" alt="Circle image" class="avatar rounded-circle shadow mr-3">
+                          </span>
+                          <div class="list-group-item-text mb-1">{{ post.title }}</div>
+                          <span class="badge badge-pill badge-primary text-lowercase">u/{{ post.user.username }}</span>
+                          <span class="text-muted pull-right" style="font-size: 0.85em;">{{ post.date }}</span>
+                        </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row align-items-center justify-content-md-between">
+          <div class="col-md-6">
+            <div class="copyright">
+              &copy; 2020 <a href="" target="_blank">Lee & Kev Co</a>.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <ul class="nav nav-footer justify-content-end">
+              <li class="nav-item">
+                <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+              </li>
+              {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                  <a href="{{ url_for('profile', user=current_user.username) }}" class="nav-link">My Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ url_for('register') }}" class="nav-link">Sign Up</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </footer>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="../static/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="../static/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="../static/js/core/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../static/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+  <script src="../static/js/plugins/bootstrap-switch.js"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="../static/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  <script src="../static/js/plugins/moment.min.js"></script>
+  <script src="../static/js/plugins/datetimepicker.js" type="text/javascript"></script>
+  <script src="../static/js/plugins/bootstrap-datepicker.min.js"></script>
+  <!-- Control Center for Argon UI Kit: parallax effects, scripts for the example pages etc -->
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <script src="../static/js/argon-design-system.min.js?v=1.2.2" type="text/javascript"></script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "argon-design-system-pro"
+      });
+  </script>
+  <script>
+    function hide(){
+      document.getElementById('flash').style.visibility = 'hidden';
+    }
+  </script>
+  <script>
+    function getIcon(x){
+      var icons = {
+        0: '<div class="icon icon-shape bg-gradient-danger rounded-circle text-white mr-3"><i class="ni ni-controller"></i></div>',
+        1: '<div class="icon icon-shape bg-gradient-success rounded-circle text-white mr-3"><i class="ni ni-laptop"></i></div>',
+        2: '<div class="icon icon-shape bg-gradient-primary rounded-circle text-white mr-3"><i class="ni ni-atom"></i></div>',
+        3: '<div class="icon icon-shape bg-gradient-info rounded-circle text-white mr-3"><i class="ni ni-chart-bar-32"></i></div>',
+        4: '<div class="icon icon-shape bg-gradient-warning rounded-circle text-white mr-3"><i class="ni ni-palette"></i></div>'
+      };
+      return icons[x];
+    }
+  </script>
+</body>
+
+</html>
